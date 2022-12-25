@@ -23,6 +23,7 @@ final class NewsView: UIViewController {
     override func loadView() {
         super.loadView()
         settings()
+        view.backgroundColor = .red
     }
     
     override func viewDidLoad() {

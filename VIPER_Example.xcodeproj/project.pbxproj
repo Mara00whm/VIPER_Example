@@ -31,6 +31,7 @@
 		793AA33929574CFD0095DF60 /* NewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AA33829574CFD0095DF60 /* NewsRouter.swift */; };
 		793AA33B29574D0B0095DF60 /* NewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AA33A29574D0B0095DF60 /* NewsInteractor.swift */; };
 		793AA33D29574D110095DF60 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AA33C29574D110095DF60 /* NewsPresenter.swift */; };
+		79AD921C29590243002AAF0A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 79AD921B29590243002AAF0A /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79AD921C29590243002AAF0A /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +219,9 @@
 			dependencies = (
 			);
 			name = VIPER_Example;
+			packageProductDependencies = (
+				79AD921B29590243002AAF0A /* SDWebImage */,
+			);
 			productName = VIPER_Example;
 			productReference = 793AA2F72957440A0095DF60 /* VIPER_Example.app */;
 			productType = "com.apple.product-type.application";
@@ -245,6 +250,9 @@
 				Base,
 			);
 			mainGroup = 793AA2EE2957440A0095DF60;
+			packageReferences = (
+				79AD921A29590243002AAF0A /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 793AA2F82957440A0095DF60 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -500,6 +508,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		79AD921A29590243002AAF0A /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		79AD921B29590243002AAF0A /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79AD921A29590243002AAF0A /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 793AA2EF2957440A0095DF60 /* Project object */;
 }

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+enum EndpointConstants {
+    static let baseURL: String = "https://api.spaceflightnewsapi.net/v3"
+    
+    static let articles: String = "articles"
+}

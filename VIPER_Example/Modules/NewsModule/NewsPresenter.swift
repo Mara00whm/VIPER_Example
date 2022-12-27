@@ -15,15 +15,24 @@ protocol NewsPresenterSettingsProtocol: AnyObject {
 
 protocol NewsPresenterToViewProtocol {
     func viewDidLoad()
+    
+    var getNumberOfRows: Int {get}
 }
 
 protocol NewsInteractorToPresenterProtocol: AnyObject {
-    
+    func listOfScienceNews(_ result: Result<[ScienceNewsModel], RequestError>)
 }
 
 typealias NewsPresenterProtocol = NewsPresenterSettingsProtocol & NewsPresenterToViewProtocol & NewsInteractorToPresenterProtocol
 
 final class NewsPresenter: NewsPresenterProtocol {
+    
+    private var scienceNewsModel: [ScienceNewsModel] = [] {
+        didSet {
+            getNumberOfRows = scienceNewsModel.count
+            view?.reloadTable()
+        }
+    }
     
     weak var view: NewsViewProtocol?
     
@@ -42,7 +51,19 @@ final class NewsPresenter: NewsPresenterProtocol {
     }
     
     func viewDidLoad() {
+        interactor.getScienceNews()
     }
     
+    var getNumberOfRows: Int = 0
+
+    func listOfScienceNews(_ result: Result<[ScienceNewsModel], RequestError>) {
+        switch result {
+        case .success(let model):
+            scienceNewsModel = model
+        case .failure(let val):
+            print("n")
+            //show alert later
+        }
+    }
     
 }

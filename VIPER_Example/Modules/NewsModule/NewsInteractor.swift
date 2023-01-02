@@ -25,7 +25,6 @@ final class NewsInteractor: NewsInteractorProtocol {
     func getScienceNews() {
         Task.init(priority: .high) {
             let value = await networkManager.getScienceNews()
-            
             presenter?.listOfScienceNews(value)
         }
     }

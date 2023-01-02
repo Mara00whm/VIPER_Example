@@ -17,6 +17,8 @@ protocol NewsPresenterToViewProtocol {
     func viewDidLoad()
     
     var getNumberOfRows: Int {get}
+
+    func getRowInfo(row: Int) -> (imageURL: String, newsTitle: String)
 }
 
 protocol NewsInteractorToPresenterProtocol: AnyObject {
@@ -25,15 +27,17 @@ protocol NewsInteractorToPresenterProtocol: AnyObject {
 
 typealias NewsPresenterProtocol = NewsPresenterSettingsProtocol & NewsPresenterToViewProtocol & NewsInteractorToPresenterProtocol
 
+
 final class NewsPresenter: NewsPresenterProtocol {
-    
-    private var scienceNewsModel: [ScienceNewsModel] = [] {
+
+     private var scienceNewsModel: [ScienceNewsModel] = [] {
         didSet {
             getNumberOfRows = scienceNewsModel.count
             view?.reloadTable()
         }
     }
     
+    //MARK: - DI
     weak var view: NewsViewProtocol?
     
     var interactor: NewsInteractorProtocol
@@ -50,12 +54,21 @@ final class NewsPresenter: NewsPresenterProtocol {
         self.router = router
     }
     
+    //MARK: - funcs
     func viewDidLoad() {
-        interactor.getScienceNews()
+        DispatchQueue.global(qos: .utility).async {
+            self.interactor.getScienceNews()
+        }
     }
     
     var getNumberOfRows: Int = 0
 
+    func getRowInfo(row: Int) -> (imageURL: String, newsTitle: String) {
+        let imageURL = scienceNewsModel[row].imageUrl ?? ""
+        let newsTitle = scienceNewsModel[row].title ?? ""
+        return (imageURL, newsTitle)
+    }
+    
     func listOfScienceNews(_ result: Result<[ScienceNewsModel], RequestError>) {
         switch result {
         case .success(let model):

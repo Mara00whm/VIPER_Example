@@ -23,7 +23,9 @@ final class NewsView: UIViewController {
        let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(ScienceNewsTVC.self,
-                      forCellReuseIdentifier: "hop")
+                      forCellReuseIdentifier: ViewStringConstants.tableID)
+        view.backgroundColor = .white
+        view.showsVerticalScrollIndicator = false
         return view
     }()
     
@@ -32,8 +34,18 @@ final class NewsView: UIViewController {
     override func loadView() {
         super.loadView()
         settings()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         presenter.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.sizeToFit()
+        navigationItem.title = ViewStringConstants.scienceTitle
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
     }
     
     override func viewDidLoad() {
@@ -60,9 +72,14 @@ final class NewsView: UIViewController {
         NSLayoutConstraint.activate([
             scienceNewsTable.topAnchor.constraint(equalTo: safeArea.topAnchor),
             scienceNewsTable.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15),
-            scienceNewsTable.leftAnchor.constraint(equalTo: view.leftAnchor, constant: -15),
+            scienceNewsTable.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
             scienceNewsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+    }
+    
+    private enum ViewStringConstants {
+        static let tableID: String = "ScienceTableID"
+        static let scienceTitle: String = "Space news"
     }
 }
 
@@ -80,12 +97,29 @@ extension NewsView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "hop", for: indexPath) as? ScienceNewsTVC {
-            cell.setData(image: "https://www.nasaspaceflight.com/wp-content/uploads/2022/12/Nilesat-301_Stephen2-1170x776.jpg")
+        if let cell = tableView.dequeueReusableCell(withIdentifier: ViewStringConstants.tableID,
+                                                    for: indexPath) as? ScienceNewsTVC {
+            let data = presenter.getRowInfo(row: indexPath.row)
+                cell.setData(image: data.imageURL,
+                             text: data.newsTitle)
             return cell
         }
         return UITableViewCell()
     }
-    
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+    {
+        let verticalPadding: CGFloat = 8
+
+        let maskLayer = CALayer()
+        maskLayer.cornerRadius = 10
+        maskLayer.backgroundColor = UIColor.black.cgColor
+        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
+        cell.layer.mask = maskLayer
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       return 120
+    }
     
 }

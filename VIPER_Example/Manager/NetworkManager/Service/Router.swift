@@ -39,6 +39,7 @@ internal class Router<EndPoint: EndPointProtocol>: NetworkRouterProtocol {
             guard let response = response as? HTTPURLResponse else {
                 return .failure(.noResponse)
             }
+            print(response)
             switch response.statusCode {
             case 200...299:
                 guard let decodedResponse = try? JSONDecoder().decode(responseModel, from: data) else {

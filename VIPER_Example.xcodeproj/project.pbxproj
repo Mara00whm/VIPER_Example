@@ -26,6 +26,14 @@
 		793AA32D295749BF0095DF60 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AA32C295749BF0095DF60 /* Endpoint.swift */; };
 		793AA32F295749C70095DF60 /* EndpointConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AA32E295749C70095DF60 /* EndpointConstants.swift */; };
 		793AA331295749D00095DF60 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AA330295749D00095DF60 /* NetworkManager.swift */; };
+		793AA33529574CEA0095DF60 /* NewsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AA33429574CEA0095DF60 /* NewsModule.swift */; };
+		793AA33729574CF30095DF60 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AA33629574CF30095DF60 /* NewsView.swift */; };
+		793AA33929574CFD0095DF60 /* NewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AA33829574CFD0095DF60 /* NewsRouter.swift */; };
+		793AA33B29574D0B0095DF60 /* NewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AA33A29574D0B0095DF60 /* NewsInteractor.swift */; };
+		793AA33D29574D110095DF60 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AA33C29574D110095DF60 /* NewsPresenter.swift */; };
+		79777BEB295B9AAF00CE07B3 /* ScienceNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79777BEA295B9AAF00CE07B3 /* ScienceNewsModel.swift */; };
+		79777BEE295BA23300CE07B3 /* ScienceNewsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79777BED295BA23300CE07B3 /* ScienceNewsTVC.swift */; };
+		79AD921C29590243002AAF0A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 79AD921B29590243002AAF0A /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +58,13 @@
 		793AA32C295749BF0095DF60 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		793AA32E295749C70095DF60 /* EndpointConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointConstants.swift; sourceTree = "<group>"; };
 		793AA330295749D00095DF60 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		793AA33429574CEA0095DF60 /* NewsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModule.swift; sourceTree = "<group>"; };
+		793AA33629574CF30095DF60 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		793AA33829574CFD0095DF60 /* NewsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRouter.swift; sourceTree = "<group>"; };
+		793AA33A29574D0B0095DF60 /* NewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInteractor.swift; sourceTree = "<group>"; };
+		793AA33C29574D110095DF60 /* NewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
+		79777BEA295B9AAF00CE07B3 /* ScienceNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScienceNewsModel.swift; sourceTree = "<group>"; };
+		79777BED295BA23300CE07B3 /* ScienceNewsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScienceNewsTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79AD921C29590243002AAF0A /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +98,7 @@
 		793AA2F92957440A0095DF60 /* VIPER_Example */ = {
 			isa = PBXGroup;
 			children = (
+				793AA33229574B920095DF60 /* Modules */,
 				793AA30F295745310095DF60 /* ProjectFiles */,
 				793AA30E2957451E0095DF60 /* Manager */,
 				793AA2FE2957440A0095DF60 /* ViewController.swift */,
@@ -114,6 +131,7 @@
 		793AA3142957472E0095DF60 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
+				79777BE9295B9A9F00CE07B3 /* Models */,
 				793AA3192957475F0095DF60 /* Worker */,
 				793AA318295747570095DF60 /* Service */,
 				793AA317295747520095DF60 /* Error */,
@@ -170,6 +188,43 @@
 			path = Worker;
 			sourceTree = "<group>";
 		};
+		793AA33229574B920095DF60 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				793AA33329574B9C0095DF60 /* NewsModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		793AA33329574B9C0095DF60 /* NewsModule */ = {
+			isa = PBXGroup;
+			children = (
+				79777BEC295BA1C700CE07B3 /* Views */,
+				793AA33429574CEA0095DF60 /* NewsModule.swift */,
+				793AA33629574CF30095DF60 /* NewsView.swift */,
+				793AA33829574CFD0095DF60 /* NewsRouter.swift */,
+				793AA33A29574D0B0095DF60 /* NewsInteractor.swift */,
+				793AA33C29574D110095DF60 /* NewsPresenter.swift */,
+			);
+			path = NewsModule;
+			sourceTree = "<group>";
+		};
+		79777BE9295B9A9F00CE07B3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				79777BEA295B9AAF00CE07B3 /* ScienceNewsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		79777BEC295BA1C700CE07B3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				79777BED295BA23300CE07B3 /* ScienceNewsTVC.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -186,6 +241,9 @@
 			dependencies = (
 			);
 			name = VIPER_Example;
+			packageProductDependencies = (
+				79AD921B29590243002AAF0A /* SDWebImage */,
+			);
 			productName = VIPER_Example;
 			productReference = 793AA2F72957440A0095DF60 /* VIPER_Example.app */;
 			productType = "com.apple.product-type.application";
@@ -214,6 +272,9 @@
 				Base,
 			);
 			mainGroup = 793AA2EE2957440A0095DF60;
+			packageReferences = (
+				79AD921A29590243002AAF0A /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 793AA2F82957440A0095DF60 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -242,16 +303,23 @@
 			files = (
 				793AA32F295749C70095DF60 /* EndpointConstants.swift in Sources */,
 				793AA32B295748BC0095DF60 /* NetworkLayer.swift in Sources */,
+				793AA33B29574D0B0095DF60 /* NewsInteractor.swift in Sources */,
+				79777BEE295BA23300CE07B3 /* ScienceNewsTVC.swift in Sources */,
 				793AA31B295747740095DF60 /* EndpointProtocol.swift in Sources */,
 				793AA2FF2957440A0095DF60 /* ViewController.swift in Sources */,
 				793AA323295747950095DF60 /* Router.swift in Sources */,
+				79777BEB295B9AAF00CE07B3 /* ScienceNewsModel.swift in Sources */,
 				793AA32D295749BF0095DF60 /* Endpoint.swift in Sources */,
 				793AA31D2957477D0095DF60 /* HTTPMethod.swift in Sources */,
 				793AA325295748660095DF60 /* JSONParameterEncoder.swift in Sources */,
+				793AA33729574CF30095DF60 /* NewsView.swift in Sources */,
 				793AA313295745750095DF60 /* AppModule.swift in Sources */,
 				793AA327295748730095DF60 /* ParameterEncoding.swift in Sources */,
 				793AA331295749D00095DF60 /* NetworkManager.swift in Sources */,
 				793AA31F295747870095DF60 /* HTTPTask.swift in Sources */,
+				793AA33929574CFD0095DF60 /* NewsRouter.swift in Sources */,
+				793AA33D29574D110095DF60 /* NewsPresenter.swift in Sources */,
+				793AA33529574CEA0095DF60 /* NewsModule.swift in Sources */,
 				793AA3292957487C0095DF60 /* URLParameterEncoder.swift in Sources */,
 				793AA2FB2957440A0095DF60 /* AppDelegate.swift in Sources */,
 				793AA3112957456E0095DF60 /* AppLoader.swift in Sources */,
@@ -464,6 +532,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		79AD921A29590243002AAF0A /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		79AD921B29590243002AAF0A /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79AD921A29590243002AAF0A /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 793AA2EF2957440A0095DF60 /* Project object */;
 }

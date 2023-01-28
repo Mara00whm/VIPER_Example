@@ -12,13 +12,16 @@ protocol AppModule {
 }
 
 protocol ModuleFactoryProtocol {
-    func makeNewsScreen(using: UINavigationController) //-> NewsModule
+    func makeNewsScreen(using navigationController: UINavigationController) -> NewsModule
 }
 
 struct ModuleFactory: ModuleFactoryProtocol {
-    //private let networkManager: NetworkManagerProtocol = NetworkManager()
+    private let networkManager: NetworkManagerProtocol = NetworkManager()
     
-    func makeNewsScreen(using: UINavigationController) {
-        // later!
+    func makeNewsScreen(using navigationController: UINavigationController) -> NewsModule {
+        let router = NewsRouter(navigationController: navigationController, moduleFactory: self)
+        let view = NewsView()
+        let interactor = NewsInteractor(networkManager: networkManager)
+        return NewsModule(view: view, interactor: interactor, router: router)
     }
 }
